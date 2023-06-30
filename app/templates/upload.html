@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="title-text">Image Classification</div>
+        <div class="button-wrapper text-center">
+            <div class="upload-btn-wrapper">
+                <form method="POST" enctype="multipart/form-data">
+                    <button class="btn">Upload an Image</button>
+                    <input type="file" name="file" onchange="form.submit()"/>
+                </form>
+            </div>
+            <!-- <button class="btn" onclick="location.reload();">Delete Photo</button> -->
+        </div>
+
+        {% if prediction %}
+            <img src="{{url_for('static', filename='uploads/' + filename)}}" alt="Uploaded Image" class="image-display">
+            <div class="prediction-text"> Prediction: {{ prediction }} </div>
+        {% endif %}
+    </div>
+</body>
+</html>
